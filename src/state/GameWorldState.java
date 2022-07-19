@@ -364,13 +364,13 @@ public class GameWorldState extends State {
                 break;
                 
             case GAMEWIN:
-            	Image winimage = Toolkit.getDefaultToolkit().getImage("data/win_game.png");
-//            	g2.setColor(Color.BLACK);
-//                g2.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
-//                g2.setColor(Color.WHITE);
-//                g2.setFont(new Font("TimesRoman", Font.PLAIN, 40));
-//                g2.drawString("All monster have been slain, mission completed!", 100, 300);
-            	g2.drawImage(winimage, 0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, null);
+//            	Image winimage = Toolkit.getDefaultToolkit().getImage("data/win_game.png");
+            	g2.setColor(Color.BLACK);
+                g2.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
+                g2.setColor(Color.WHITE);
+                g2.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+                g2.drawString("All monster have been slain, mission completed!", 100, 300);
+//            	g2.drawImage(winimage, 0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, null);
                 break;
                 
             case GAMEPLAY:
