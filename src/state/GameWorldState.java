@@ -327,9 +327,9 @@ public class GameWorldState extends State {
 
             if(storyTutorial >= 1){ 
                 g2.drawImage(image, 612, 418, 100, 100, null);
-                g2.setColor(Color.BLUE);
-                g2.fillRect(280, 450, 350, 80); 
                 g2.setColor(Color.WHITE);
+                g2.fillRect(280, 450, 350, 80); 
+                g2.setColor(Color.BLACK);
                 String text = textTutorial.substring(0, currentSize - 1);
                 drawString(g2, text, 290, 460);
             }                
@@ -444,22 +444,22 @@ public class GameWorldState extends State {
     @Override
     public void setPressedButton(int code) {
        switch(code){
-	        case KeyEvent.VK_UP:
+           case KeyEvent.VK_W:
 	        	player.setDirection(ParticularObject.UP_DIR);
 	        	player.run();
 	            break;
             
-	        case KeyEvent.VK_DOWN:
+           case KeyEvent.VK_S:
 	        	player.setDirection(ParticularObject.DOWN_DIR);
 	        	player.run();
 	            break;
 	            
-	        case KeyEvent.VK_RIGHT:
+           case KeyEvent.VK_D:
 	        	player.setDirection(ParticularObject.RIGHT_DIR);
 	        	player.run();
 	            break;
 	            
-	        case KeyEvent.VK_LEFT:
+           case KeyEvent.VK_A:
 	        	player.setDirection(ParticularObject.LEFT_DIR);
 	        	player.run();
 	            break;
@@ -488,7 +488,7 @@ public class GameWorldState extends State {
 	        case KeyEvent.VK_SPACE:
 	        	player.attack();
 	            break;	 
-	        case KeyEvent.VK_A:
+           case KeyEvent.VK_F:
 	        	player.shooting();
 	        	break;
         }
@@ -498,19 +498,19 @@ public class GameWorldState extends State {
     public void setReleasedButton(int code) {
         switch(code){
             
-            case KeyEvent.VK_UP:            	
+            case KeyEvent.VK_W:
             		player.stopRun();
                 break;
                 
-            case KeyEvent.VK_DOWN:           	
+            case KeyEvent.VK_S:
             		player.stopRun();
                 break;
                 
-            case KeyEvent.VK_RIGHT:                
+            case KeyEvent.VK_D:
             		player.stopRun();
                 break;
                 
-            case KeyEvent.VK_LEFT:                
+            case KeyEvent.VK_A:
             		player.stopRun();
                 break;
                 

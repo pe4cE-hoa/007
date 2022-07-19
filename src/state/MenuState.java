@@ -17,14 +17,14 @@ public class MenuState extends State {
     private Graphics graphicsPaint;
 	private int currentChoice = -1;
 	
-	private Image image = Toolkit.getDefaultToolkit().getImage("data/backg.png");
+	private Image image = Toolkit.getDefaultToolkit().getImage("data/back_g.jpg");
 	
-	private Color titleColor = new Color(255, 0, 0);
-	private Font titleFont = new Font("Century Gothic", Font.PLAIN, 120);
+	private Color titleColor = new Color(250, 250, 250);
+	private Font titleFont = new Font("Century Gothic", Font.PLAIN, 100);
 	private Font font = new Font("Arial", Font.PLAIN, 40);
 	private String[] options = {
 			"Start",
-			"Help",
+			"Tutorial",
 			"About Us",
 			"Quit"
 		};
@@ -51,16 +51,16 @@ public class MenuState extends State {
 		
 		graphicsPaint.setColor(titleColor);
 		graphicsPaint.setFont(titleFont);
-		graphicsPaint.drawString("RPG Game", 180, 135);
+		graphicsPaint.drawString("Hero Adventure", 125, 135);
 		
 		graphicsPaint.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
-				graphicsPaint.setColor(Color.BLACK);
+				graphicsPaint.setColor(Color.YELLOW);
 			} else {
-				graphicsPaint.setColor(Color.BLUE);
+				graphicsPaint.setColor(Color.LIGHT_GRAY);
 			}
-			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 - 100, 270 + i * 65);
+			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 - 80, 325 + i * 65);
 		}
     }
     
@@ -76,14 +76,14 @@ public class MenuState extends State {
     public void setPressedButton(int code) {
         switch(code) {
         
-            case KeyEvent.VK_DOWN: 
+            case KeyEvent.VK_S:
                 currentChoice++;
                 if(currentChoice >= options.length) {
                     currentChoice = 0;
                 }
                 break;
                 
-            case KeyEvent.VK_UP: 
+            case KeyEvent.VK_W:
                 currentChoice--;
                 if(currentChoice < 0) {
                     currentChoice = options.length - 1;
@@ -107,7 +107,7 @@ public class MenuState extends State {
                 break;
                     
             case 1:
-            	gamePanel.setState(new HelpState(gamePanel)); 
+            	gamePanel.setState(new TutorialState(gamePanel));
                 break;
                 
             case 2:

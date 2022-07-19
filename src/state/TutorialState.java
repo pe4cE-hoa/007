@@ -11,18 +11,19 @@ import java.awt.image.BufferedImage;
 import display.GameFrame;
 import display.GamePanel;
 
-public class HelpState extends State{
+public class TutorialState extends State{
 	private BufferedImage bufferedImage;
     private Graphics graphicsPaint;
 	private int currentChoice = -1;
 		
 	private Font font = new Font("Arial", Font.PLAIN, 20);
 	private String[] options = {
-			"Menu",
-			"Quit"
+            "Menu"
+			/*"Menu",
+			"Quit"*/
 		};
 		
-	public HelpState(GamePanel gamePanel) {
+	public TutorialState(GamePanel gamePanel) {
         super(gamePanel); 
         bufferedImage = new BufferedImage(GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);    
     }
@@ -40,16 +41,16 @@ public class HelpState extends State{
             return;
         }
 
-        Image help = Toolkit.getDefaultToolkit().getImage("data/helpState.png");
+        Image help = Toolkit.getDefaultToolkit().getImage("data/tutorialState.jpg");
         graphicsPaint.drawImage(help, 0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, null);
 		graphicsPaint.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
 				graphicsPaint.setColor(Color.YELLOW);
 			} else {
-				graphicsPaint.setColor(Color.BLUE);
+				graphicsPaint.setColor(Color.WHITE);
 			}
-			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 - 30, 495 + i * 30);
+			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 + 350, 500 + i * 30);
 		}
     }
     
@@ -65,14 +66,14 @@ public class HelpState extends State{
     public void setPressedButton(int code) {
         switch(code) {
         
-            case KeyEvent.VK_DOWN: 
+            case KeyEvent.VK_S:
                 currentChoice++;
                 if(currentChoice >= options.length) {
                     currentChoice = 0;
                 }
                 break;
                 
-            case KeyEvent.VK_UP: 
+            case KeyEvent.VK_W:
                 currentChoice--;
                 if(currentChoice < 0) {
                     currentChoice = options.length - 1;
@@ -94,8 +95,8 @@ public class HelpState extends State{
             case 0:
                 gamePanel.setState(new MenuState(gamePanel)); 
                 break; 
-            case 1:
-            	System.exit(1);
+//            case 1:
+//            	System.exit(1);
         }
     }
 }

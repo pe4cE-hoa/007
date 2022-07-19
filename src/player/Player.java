@@ -30,7 +30,7 @@ public class Player extends Human {
     private int numberOfLife;
     private int currentDame;
     public Player(float x, float y, GameWorldState gameWorld) {
-        super(x, y, 40, 40, 300, gameWorld);
+        super(x, y, 50, 50, 300, gameWorld);
         int temp = LevelState.getCurrentChoice();
     	if (temp == 1){ 
     		setBlood(200);

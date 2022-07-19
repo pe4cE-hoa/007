@@ -18,8 +18,9 @@ public class AboutUsState extends State{
 		
 	private Font font = new Font("Arial", Font.PLAIN, 20);
 	private String[] options = {
-			"Menu",
-			"Quit"
+            "Menu"
+//			"Menu",
+//			"Quit"
 		};
 		
 	public AboutUsState(GamePanel gamePanel) {
@@ -39,30 +40,22 @@ public class AboutUsState extends State{
             graphicsPaint = bufferedImage.getGraphics();
             return;
         }
-        Image aboutus = Toolkit.getDefaultToolkit().getImage("data/AboutUs.png");
+        Image aboutus = Toolkit.getDefaultToolkit().getImage("data/AboutUs.jpg");
         graphicsPaint.drawImage(aboutus, 0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, null);
 //    	graphicsPaint.setFont(fontIntro);
 //        graphicsPaint.setColor(Color.BLACK); 
 //		graphicsPaint.fillRect(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight()); 	
 //
-//        graphicsPaint.setColor(Color.WHITE); 
-//		
-//    	graphicsPaint.drawString("This is a simple RPG game project for OOP - 20202", GameFrame.SCREEN_WIDTH/4 - 70, 100);
-//    	graphicsPaint.drawString("Menter: Ths. Nguyen Manh Tuan", GameFrame.SCREEN_WIDTH/3 - 30, 155);
-//    	graphicsPaint.drawString("We are:", GameFrame.SCREEN_WIDTH/3 - 30, 195);
-//    	graphicsPaint.drawString("Nguyen Van Bien - 20193993", GameFrame.SCREEN_WIDTH/3, 235);
-//    	graphicsPaint.drawString("Nguyen Quang Linh - 20194092", GameFrame.SCREEN_WIDTH/3, 275);
-//    	graphicsPaint.drawString("Nguyen Van Minh - 20194121", GameFrame.SCREEN_WIDTH/3, 315);
-//    	graphicsPaint.drawString("Chu Manh Tien - 20194182", GameFrame.SCREEN_WIDTH/3, 355);	
+//        graphicsPaint.setColor(Color.WHITE);
 //		
 		graphicsPaint.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
 				graphicsPaint.setColor(Color.YELLOW);
 			} else {
-				graphicsPaint.setColor(Color.BLUE);
+				graphicsPaint.setColor(Color.WHITE);
 			}
-			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 - 15, 425 + i * 30);
+			graphicsPaint.drawString(options[i], GameFrame.SCREEN_WIDTH/2 + 350, 500 + i * 30);
 		}
     }
     
@@ -78,14 +71,14 @@ public class AboutUsState extends State{
     public void setPressedButton(int code) {
         switch(code) {
         
-            case KeyEvent.VK_DOWN: 
+            case KeyEvent.VK_S:
                 currentChoice++;
                 if(currentChoice >= options.length) {
                     currentChoice = 0;
                 }
                 break;
                 
-            case KeyEvent.VK_UP: 
+            case KeyEvent.VK_W:
                 currentChoice--;
                 if(currentChoice < 0) {
                     currentChoice = options.length - 1;
@@ -107,8 +100,8 @@ public class AboutUsState extends State{
             case 0:
                 gamePanel.setState(new MenuState(gamePanel)); 
                 break; 
-            case 1:
-            	System.exit(1);
+//            case 1:
+//            	System.exit(1);
         }
     }
 }
