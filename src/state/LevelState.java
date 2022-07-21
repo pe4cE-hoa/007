@@ -24,7 +24,7 @@ public class LevelState extends State{
 	private String[] options = {
 			"Easy",
 			"Hard",
-			"Menu"
+			"Back"
 		};
 		
 	public LevelState(GamePanel gamePanel) {
