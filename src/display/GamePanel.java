@@ -32,26 +32,49 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     
     @Override
     public void run() {
-        long previousTime = System.nanoTime();
-        long currentTime;
-        long sleepTime;
-        long period = 1000000000/100;
+        double drawInterval = 1000000000/60;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int drawCount = 0;
+        long currentTime1;
+//        long previousTime = System.nanoTime();
+//        long currentTime;
+//        long sleepTime;
+//        long period = 1000000000/60;
 
         while(isRunning){
-            gameState.Update();
-            gameState.Render();
-            repaint();
+//            gameState.Update();
+//            gameState.Render();
+//            repaint();
+//
+//            currentTime = System.nanoTime();
+//            sleepTime = period - (currentTime - previousTime);
+//            try{
+//
+//                    if(sleepTime > 0)
+//                            Thread.sleep(sleepTime/1000000);
+//                    else Thread.sleep(period/2000000);
+//
+//            }catch(Exception e){}
+//            previousTime = System.nanoTime();
+            currentTime1 = System.nanoTime();
+            delta += (currentTime1 - lastTime) / drawInterval;
+            timer += currentTime1 - lastTime;
+            lastTime = currentTime1;
 
-            currentTime = System.nanoTime();
-            sleepTime = period - (currentTime - previousTime);
-            try{
-
-                    if(sleepTime > 0)
-                            Thread.sleep(sleepTime/1000000);
-                    else Thread.sleep(period/2000000);
-
-            }catch(Exception e){}
-            previousTime = System.nanoTime();
+            if(delta >= 1) {
+                gameState.Update();
+                gameState.Render();
+                repaint();
+                delta--;
+                drawCount++;
+            }
+//            if(timer >= 1000000000) {
+//                System.out.println("FPS: " + drawCount);
+//                drawCount = 0;
+//                timer = 0;
+//            }
         }
     }
 

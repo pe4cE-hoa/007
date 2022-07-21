@@ -178,7 +178,7 @@ public abstract class ParticularObject extends GameObject {
                                         
                     if(object.getDamage() > 0){
                                                 
-                        System.out.println("eat damage.... from collision with enemy........ "+object.getDamage());
+//                      System.out.println("eat damage.... from collision with enemy........ "+object.getDamage());
                         beHurt(object.getDamage());
                     }                    
                 }  
@@ -187,11 +187,11 @@ public abstract class ParticularObject extends GameObject {
             case BEHURT:                
                 	state = IMMORTAL;
                     setStartTimeImmortal(System.nanoTime());
-                    if(getBlood() == 0) state = DEATH;                                   
+                    if(getBlood() == 0) state = DEATH;
                 break;
                 
             case IMMORTAL:
-            	System.out.println("state = IMMORTAL");
+//            	System.out.println("state = IMMORTAL");
                 if(System.nanoTime() - getStartTimeImmortal() > timeForImmortal)
                     state = ALIVE;
                 break;
